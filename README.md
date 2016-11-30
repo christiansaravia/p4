@@ -13,4 +13,5 @@ Coming soon.
 No login required.
 
 ## Outside code
-Coming soon.
+* Bootstrap CSS (http://getbootstrap.com)
+* Font Awesome CSS (http://fontawesome.io)
