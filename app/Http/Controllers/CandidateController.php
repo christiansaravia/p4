@@ -13,7 +13,7 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('candidate.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidate.create');
     }
 
     /**
@@ -34,39 +34,54 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        # Validate
+        $this->validate($request, [
+            'name' => 'required|min:3|alpha_num',
+            'email'=> 'required|email',
+        ]);
+
+        # Get data from the form
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        # Code here to enter the candidate into the database
+        # Code here that has some logic, such as generating lorem ipsum text
+
+        # Print the results
+        # return \Redirect::to('/books/create');
+        return 'Process adding new candidate: '.$name.', '.$email;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $username
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
-        //
+        return view('candidate.show')->with('username', $username);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $username
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        //
+        return view('candidate.edit')->with('username', $username);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $username
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
         //
     }
@@ -74,10 +89,10 @@ class CandidateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $username
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($username)
     {
         //
     }

@@ -13,7 +13,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return view('company.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('company.show')->with('id', $id);;
     }
 
     /**
