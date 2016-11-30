@@ -19,10 +19,10 @@ Route::get('/', function () {
 Route::get('/candidates', 'CandidateController@index')->name('candidates.index');
 Route::get('/candidates/create', 'CandidateController@create')->name('candidates.create');
 Route::post('/candidates', 'CandidateController@store')->name('candidates.store');
-Route::get('/candidates/{candidate}', 'CandidateController@show')->name('candidates.show');
-Route::get('/candidates/{candidate}/edit', 'CandidateController@edit')->name('candidates.edit');
-Route::put('/candidates/{candidate}', 'CandidateController@update')->name('candidates.update');
-Route::delete('/candidates/{candidate}', 'CandidateController@destroy')->name('candidates.destroy');
+Route::get('/candidates/{username}', 'CandidateController@show')->name('candidates.show');
+Route::get('/candidates/{username}/edit', 'CandidateController@edit')->name('candidates.edit');
+Route::put('/candidates/{username}', 'CandidateController@update')->name('candidates.update');
+Route::delete('/candidates/{username}', 'CandidateController@destroy')->name('candidates.destroy');
 
 // Routes for Companies
 Route::get('/companies', 'CompanyController@index')->name('companies.index');
@@ -36,4 +36,3 @@ Route::delete('/companies/{company}', 'CompanyController@destroy')->name('compan
 // Routes for Misc/Static Pages
 Route::get('/about', 'PageController@about')->name('pages.about');
 Route::get('/contact', 'PageController@contact')->name('pages.contact');
-
