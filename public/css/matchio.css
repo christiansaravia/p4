@@ -35,3 +35,7 @@ footer {
 	font-size: 3em;
 	font-weight: bold;
 }
+
+.thumbnail {
+	padding: 2rem 0;
+}
