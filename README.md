@@ -9,6 +9,9 @@ This is a web application built with Laravel that attemps to match early-stage c
 ## Demo
 Coming soon.
 
+## Planning Doc
+* [Matchio Planning Doc](https://docs.google.com/document/d/19geUfWcFtY9COq0nMv0zk9R6CYypv5IxqBFipUCtXlU/edit?usp=sharing)
+
 ## Details for teaching team
 No login required.
 
