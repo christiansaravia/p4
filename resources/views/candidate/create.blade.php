@@ -8,11 +8,10 @@
 @section('title', 'Add new candidate')
 
 @section('content')
-    
+
     <div class="row">
         <div class="col-md-12">
-            <h2>Add your profile to our network of candidates</h2>
-            <br>
+            <h2 class="page-header">Add your profile to our network of candidates</h2>
         </div>
     </div>
 
