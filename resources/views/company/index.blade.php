@@ -15,8 +15,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<a class="btn btn-primary" href="#">Sign in to post a new job</a>
-			<a class="btn btn-info" href="#">Request access to post jobs</a>
+			<a class="btn btn-primary" href="#">Create a company profile</a>
 		</div>
 	</div>
 @endsection
