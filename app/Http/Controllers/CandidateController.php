@@ -5,7 +5,7 @@ namespace Matchio\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon;
-use App\Book;
+use Matchio\Candidate;
 
 class CandidateController extends Controller
 {
@@ -16,7 +16,12 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        return view('candidate.index');
+        $candidates = Candidate::all(); # Query DB
+        $first = $candidates->first(); # Query Collection (avoid multiple queries to DB)
+
+        return view('candidate.index')  
+            ->with('candidates', $candidates)
+            ->with('first', $first);       
     }
 
     /**
@@ -41,26 +46,35 @@ class CandidateController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|alpha_num',
             'email'=> 'required|email',
-            'linkedin' => 'active_url',
+            'linkedin' => 'required|active_url',
             'portfolio' => 'active_url',
+            'website' => 'active_url',
             'role' => 'required',
-            'projects' => 'required',
-            'story' => 'required',
-            'agreement' => 'required',
+            'agreement' => '',
         ]);
 
         # Get data from the form
-        $name = $request->input('name');
-        $email = $request->input('email');
+        #$name = $request->input('name');
+        #$email = $request->input('email');
 
         # Code here to enter the candidate into the database
-        
+        $candidate = new Candidate();
+        $candidate->name = $request->name;
+        $candidate->email = $request->email;
+        $candidate->linkedin = $request->linkedin;
+        $candidate->github = $request->github;
+        $candidate->website = $request->website;
+        $candidate->role = $request->role;
+        $candidate->agreement = $request->agreement;
+        $candidate->save();
 
         # Code here that has some logic, such as generating lorem ipsum text
 
+        Session::flash('flash_message','Your candidate profile was added');
+
         # Print the results
-        # return \Redirect::to('/books/create');
-        return 'Process adding new candidate: '.$name.', '.$email;
+        return \Redirect::to('/candidates');
+        #return 'Process adding new candidate: '.$name.', '.$email;
     }
 
     /**

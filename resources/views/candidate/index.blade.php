@@ -8,109 +8,40 @@
 @endsection
 
 @section('content')
+	
+	@if(Session::get('flash_message') != null))
+    	<div class='flash_message'>{{ Session::get('flash_message') }}</div>
+	@endif
+
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="page-header">Find a job <small>Over 85 companies recruiting</small></h1>
+			<h1 class="page-header">Candidates seeking jobs</h1>
 			<a class="btn btn-primary" href="/candidates/create">Create my candidate profile</a>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="page-header">Companies hiring</h2>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/aerofs.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/automattic.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/bellhops.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/bitly.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	</div>
+	<br><br>
 
-	<div class="row">
-		<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/bluebottle.png" alt="..." width="100px" height="200px">
+	@foreach($candidates as $candidate)
+	<div class="media">
+		<div class="media-left media-top">
+	    	<a href="#">
+	      		<img class="media-object" src="./images/user.png" alt="...">
 	    	</a>
 	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/brightwheel.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/comparably.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/crowdrise.png" alt="..." width="100px" height="200px">
-	    	</a>
+	  	<div class="media-body">
+	    	<h4 class="media-heading">{{ $candidate->name }}</h4>
+		    <p>
+			    <a href="{{ $candidate->linkedin }}"><i class="fa fa-linkedin-square socials" aria-hidden="true"></i></a>
+			    <a href="{{ $candidate->portfolio }}"><i class="fa fa-github-square socials" aria-hidden="true"></i></a>
+			    <a href="{{ $candidate->portfolio }}"><i class="fa fa-window-maximize socials" aria-hidden="true"></i></a>
+			    <!--<a href="{{ $candidate->portfolio }}"><i class="fa fa-behance-square socials" aria-hidden="true"></i></a>-->
+		    </p>
+		    <p>Seeking a position in <mark>{{ $candidate->role }}</mark>.</p>
+		    <p>Contact: {{ $candidate->email }}</p>
 	  	</div>
 	</div>
-
-	<div class="row">
-		<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/docker.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/gimlet.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/kickstarter.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/mark43.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/9gag.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/medium.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/uber.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	  	<div class="col-xs-6 col-md-3">
-	    	<a href="#" class="thumbnail">
-	      		<img src="./images/vidme.png" alt="..." width="100px" height="200px">
-	    	</a>
-	  	</div>
-	</div>
+	<hr>
+	@endforeach
 
 @endsection
