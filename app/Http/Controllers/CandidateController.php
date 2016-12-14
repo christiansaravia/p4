@@ -44,13 +44,12 @@ class CandidateController extends Controller
     {
         # Validate the request data
         $this->validate($request, [
-            'name' => 'required|min:3|alpha_num',
+            'name' => 'required|alpha',
             'email'=> 'required|email',
             'linkedin' => 'required|active_url',
             'portfolio' => 'active_url',
             'website' => 'active_url',
             'role' => 'required',
-            'agreement' => '',
         ]);
 
         # Get data from the form
