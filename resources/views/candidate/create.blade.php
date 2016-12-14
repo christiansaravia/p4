@@ -17,79 +17,69 @@
 
     <div class="row">
         <div class="col-md-6">
+
+            <!-- Start of form
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
             <form method="POST" action="/candidates">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Enter full name" value="{{ old('name') }}">
+                    <div class='error'>{{ $errors->first('name') }}</div>
                 </div>
 
                 <div class="form-group">
                     <label>Email address</label>
                     <input type="email" name="email" class="form-control" placeholder="Enter email" value="{{ old('name') }}">
-                    <small class="form-text text-muted">We'll send a link to verify your address. We promise not to spam. This is to contact you about any relevant job opportunities from our network of companies.</small>
+                    <small class="form-text text-muted">We promise not to spam. This is to contact you about any relevant job opportunities from our network of companies.</small>
+                    <div class='error'>{{ $errors->first('email') }}</div>
                 </div>
 
                 <div class="form-group">
-                    <label>LinkedIn</label>
-                    <input type="url" class="form-control" id="exampleInputPassword1" placeholder="LinkedIn URL">
-                    <small id="emailHelp" class="form-text text-muted">Make sure your education and work experience are updated.</small>
+                    <label>LinkedIn <small>(Optional)</small></label>
+                    <input type="url" name="linkedin" class="form-control" placeholder="LinkedIn URL" value="{{ old('name') }}">
+                    <small id="emailHelp" class="form-text text-muted">If you include, make sure the education and work experience sections are updated.</small>
+                    <div class='error'>{{ $errors->first('linkedin') }}</div>
                 </div>
 
                 <div class="form-group">
                     <label>GitHub, Behance, or Link to Portfolio <small>(Optional)</small></label>
-                    <input type="url" class="form-control" id="exampleInputPassword1" placeholder="GitHub/Behance/Portfolio URL">
+                    <input type="url" name="portfolio" class="form-control" placeholder="GitHub/Behance/Portfolio URL" value="{{ old('name') }}">
+                    <div class='error'>{{ $errors->first('portfolio') }}</div>
                 </div>
 
                 <div class="form-group">
                     <label>Ideal Role</label>
-                    <select class="form-control" id="exampleSelect1">
-                        <option>Select one</option>
-                        <option>Software Engineering</option>
-                        <option>Design</option>
-                        <option>Product Management</option>
-                        <option>Business Development</option>
-                        <option>Marketing</option>
-                        <option>Dude, my ideal role wasn't one of these options!</option>
+                    <select type="" name="role" class="form-control">
+                        <option value="" disabled selected>Select one</option>
+                        <option value="se">Software Engineering</option>
+                        <option value="ds">Design</option>
+                        <option value="pm">Product Management</option>
+                        <option value="bd">Business Development</option>
+                        <option value="mk">Marketing</option>
+                        <option value="or">Dude, my ideal role wasn't one of these options!</option>
                     </select>
+                <div class='error'>{{ $errors->first('role') }}</div>
                 </div>
 
                 <div class="form-group">
-                    <label>Location, location, location! Where would you like to work? Check all the cities you'd be open to working in, or simply check "Anywhere" if you're not tied to a place.</label>
-                     <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Anywhere
-                          <br>
-                          <input type="checkbox"> San Francisco
-                          <br>
-                          <input type="checkbox"> Los Angeles
-                          <br>
-                          <input type="checkbox"> New York
-                          <br>
-                          <input type="checkbox"> Boston
-                          <br>
-                          <input type="checkbox"> Remote
-                          <br>
-                          <input type="checkbox"> My city isn't listed here
-                        </label>
-                      </div>
-                    </div>
-
-                <div class="form-group">
                     <label>Tell us about projects you've worked on, either as part of a job or for fun. Feel free to include any relevant links to live projects and/or GitHub repos.</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
+                    <textarea name="projects" class="form-control" rows="6"></textarea>
+                <div class='error'>{{ $errors->first('projects') }}</div>
                 </div>
 
                 <div class="form-group">
                     <label>Tell us your personal story in no more than 2 paragraphs. This is our chance to get to know you.</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
+                    <textarea name="story" class="form-control" rows="6"></textarea>
+                <div class='error'>{{ $errors->first('story') }}</div>
                 </div>
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input"> I agree to receive emails from company founders and recruiters in Lowercase's network regarding job opportunities based on my answers above.
+                        <input name="agreement" type="checkbox" class="form-check-input"> I agree to receive emails from company founders and recruiters in Lowercase's network regarding job opportunities based on my answers above.
                     </label> 
+                <div class='error'>{{ $errors->first('agreement') }}</div>
                 </div>
 
                 <br>
@@ -99,15 +89,5 @@
             </form>
         </div>
     </div>
-
-    <br>
-
-    @if(count($errors) > 0)
-	    <ul>
-	        @foreach ($errors->all() as $error)
-	            <li>{{ $error }}</li>
-	        @endforeach
-	    </ul>
-	@endif
 
 @endsection

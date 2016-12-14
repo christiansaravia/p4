@@ -15,6 +15,9 @@ Coming soon.
 ## Details for teaching team
 No login required.
 
+## Packages
+* Laravel Debugbar (https://github.com/barryvdh/laravel-debugbar)
+
 ## Outside code
 * Bootstrap CSS (http://getbootstrap.com)
 * Font Awesome CSS (http://fontawesome.io)

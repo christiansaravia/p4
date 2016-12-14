@@ -37,10 +37,16 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        # Validate
+        # Validate the request data
         $this->validate($request, [
             'name' => 'required|min:3|alpha_num',
             'email'=> 'required|email',
+            'linkedin' => 'active_url',
+            'portfolio' => 'active_url',
+            'role' => 'required',
+            'projects' => 'required',
+            'story' => 'required',
+            'agreement' => 'required',
         ]);
 
         # Get data from the form
@@ -48,6 +54,8 @@ class CandidateController extends Controller
         $email = $request->input('email');
 
         # Code here to enter the candidate into the database
+
+
         # Code here that has some logic, such as generating lorem ipsum text
 
         # Print the results

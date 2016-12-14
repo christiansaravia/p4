@@ -26,10 +26,9 @@ class CreateCandidatesTable extends Migration
         # The rest of the fields...
         $table->string('name');
         $table->string('email');
-        $table->string('linkedin');
-        $table->string('portfolio');
+        $table->string('linkedin')->nullable();
+        $table->string('portfolio')->nullable();
         $table->string('role');
-        $table->string('location');
         $table->text('projects');
         $table->text('story');
 
