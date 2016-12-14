@@ -11,10 +11,6 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="page-header">Post a job <small>Over 1,000 candidates seeking jobs</small></h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
 			<a class="btn btn-primary" href="#">Create a company profile</a>
 		</div>
 	</div>

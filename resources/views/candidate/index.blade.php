@@ -11,13 +11,16 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="page-header">Find a job <small>Over 85 companies recruiting</small></h1>
+			<a class="btn btn-primary" href="/candidates/create">Create my candidate profile</a>
 		</div>
-		<a class="btn btn-primary" href="/candidates/create">Create my candidate profile</a>
 	</div>
 
-	<div class="col-md-12">
-		<h2 class="page-header">Companies hiring</h2>
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="page-header">Companies hiring</h2>
+		</div>
 	</div>
+	
 	<div class="row">
 		<div class="col-xs-6 col-md-3">
 	    	<a href="#" class="thumbnail">
