@@ -54,7 +54,7 @@ class CandidateController extends Controller
         $email = $request->input('email');
 
         # Code here to enter the candidate into the database
-
+        
 
         # Code here that has some logic, such as generating lorem ipsum text
 
