@@ -44,11 +44,11 @@ class CandidateController extends Controller
     {
         # Validate the request data
         $this->validate($request, [
-            'name' => 'required|alpha',
+            'name' => 'required|string',
             'email'=> 'required|email',
             'linkedin' => 'required|active_url',
-            'portfolio' => 'active_url',
-            'website' => 'active_url',
+            'portfolio' => 'url',
+            'website' => 'url',
             'role' => 'required',
         ]);
 
@@ -64,16 +64,12 @@ class CandidateController extends Controller
         $candidate->github = $request->github;
         $candidate->website = $request->website;
         $candidate->role = $request->role;
-        $candidate->agreement = $request->agreement;
         $candidate->save();
 
         # Code here that has some logic, such as generating lorem ipsum text
 
-        Session::flash('flash_message','Your candidate profile was added');
-
         # Print the results
-        return \Redirect::to('/candidates');
-        #return 'Process adding new candidate: '.$name.', '.$email;
+        return redirect('/candidates');
     }
 
     /**

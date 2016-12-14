@@ -86,7 +86,7 @@
                         name="website" 
                         class="form-control" 
                         placeholder="https://yourdomain.com" 
-                        value="{{ old('website','https://johndoe.com') }}"
+                        value="{{ old('website','https://apple.com') }}"
                     >
                     <div class='error'>{{ $errors->first('website') }}</div>
                 </div>
@@ -97,29 +97,18 @@
                         id="role"
                         name="role" 
                         class="form-control"
+                        value="{{ old('website') }}"
                     >
                         
                         <option value="" disabled selected>Select one</option>
-                        <option value="software">Software Engineering</option>
-                        <option value="design">Design</option>
-                        <option value="product">Product Management</option>
-                        <option value="business">Business Development</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="other">Dude, my ideal role wasn't one of these options!</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Design">Design</option>
+                        <option value="Product Management">Product Management</option>
+                        <option value="Business Development">Business Development</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Other">Dude, my ideal role wasn't one of these options!</option>
                     </select>
                     <div class='error'>{{ $errors->first('role') }}</div>
-                </div>
-
-                <div class="form-check">
-                    <input 
-                        type="checkbox"
-                        id="agreement"
-                        name="agreement" 
-                        class="form-check-input"
-                        value="{{ old('agreement') }}"
-                    > 
-                    <small class="form-text text-muted">I agree to receive emails from company founders and recruiters in Lowercase's network regarding job opportunities based on my answers above. We promise not to spam.</small> 
-                    <div class='error'>{{ $errors->first('agreement') }}</div>
                 </div>
 
                 <br>

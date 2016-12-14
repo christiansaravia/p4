@@ -19,10 +19,10 @@ Route::get('/', function () {
 Route::get('/candidates', 'CandidateController@index')->name('candidates.index');
 Route::get('/candidates/create', 'CandidateController@create')->name('candidates.create');
 Route::post('/candidates', 'CandidateController@store')->name('candidates.store');
-Route::get('/candidates/{username}', 'CandidateController@show')->name('candidates.show');
-Route::get('/candidates/{username}/edit', 'CandidateController@edit')->name('candidates.edit');
-Route::put('/candidates/{username}', 'CandidateController@update')->name('candidates.update');
-Route::delete('/candidates/{username}', 'CandidateController@destroy')->name('candidates.destroy');
+Route::get('/candidates/{id}', 'CandidateController@show')->name('candidates.show');
+Route::get('/candidates/{id}/edit', 'CandidateController@edit')->name('candidates.edit');
+Route::put('/candidates/{id}', 'CandidateController@update')->name('candidates.update');
+Route::delete('/candidates/{id}', 'CandidateController@destroy')->name('candidates.destroy');
 
 // Routes for Companies
 Route::get('/companies', 'CompanyController@index')->name('companies.index');
