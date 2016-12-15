@@ -32,7 +32,7 @@
                         type="text" 
                         id="name"
                         name="name" 
-                        value="{{ old('name', 'John Doe') }}"
+                        value="{{ old('name') }}"
                         placeholder="Enter full name" 
                         class="form-control" 
                     >
@@ -45,7 +45,7 @@
                         type="email"
                         id="email"
                         name="email" 
-                        value="{{ old('email', 'john@gmail.com') }}"
+                        value="{{ old('email') }}"
                         placeholder="Enter email"
                         class="form-control" 
                     >
@@ -58,7 +58,7 @@
                         type="url" 
                         id="linkedin"
                         name="linkedin" 
-                        value="{{ old('linkedin', 'https://linkedin.com/in/john') }}"
+                        value="{{ old('linkedin') }}"
                         placeholder="https://linkedin.com/in/username"
                         class="form-control" 
                     >
@@ -74,7 +74,7 @@
                         name="github" 
                         class="form-control" 
                         placeholder="https://github.com/username" 
-                        value="{{ old('github', 'https://github.com/john') }}">
+                        value="{{ old('github') }}">
                     <div class='error'>{{ $errors->first('github') }}</div>
                 </div>
 
@@ -86,7 +86,7 @@
                         name="website" 
                         class="form-control" 
                         placeholder="https://yourdomain.com" 
-                        value="{{ old('website','https://apple.com') }}"
+                        value="{{ old('website') }}"
                     >
                     <div class='error'>{{ $errors->first('website') }}</div>
                 </div>
