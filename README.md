@@ -4,10 +4,10 @@
 <http://p4.christiansaravia.com>
 
 ## Description
-This is a web application built with Laravel that attemps to match early-stage companies with potential candidates.
+This is a web application built with Laravel that attemps to make it easier for early-stage companies to match with potential candidates.
 
 ## Demo
-Coming soon.
+* <https://youtu.be/WOHERXJSLUM>
 
 ## Planning Doc
 * [Matchio Planning Doc](https://docs.google.com/document/d/19geUfWcFtY9COq0nMv0zk9R6CYypv5IxqBFipUCtXlU/edit?usp=sharing)
@@ -17,7 +17,7 @@ Per P4 specs, you can use the application with either of following 2 users:
 * Name: Jill
 * Email: jill@harvard.edu
 * Password: helloworld
-<br>
+<br><br>
 * Name: Jamal
 * Email: jamal@harvard.edu
 * Password: helloworld (all lowercase, no spaces)
