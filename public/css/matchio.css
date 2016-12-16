@@ -40,6 +40,10 @@ footer {
 	padding: 2rem 0;
 }
 
+.jumbotron {
+	background: white;
+}
+
 .error {
     color:red;
     margin:0;
@@ -49,7 +53,7 @@ footer {
 }
 
 .socials {
-	font-size: 2em;
+	font-size: 3em;
 	color: #081b3f;
 }
 

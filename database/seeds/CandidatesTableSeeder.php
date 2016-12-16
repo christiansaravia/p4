@@ -16,32 +16,40 @@ class CandidatesTableSeeder extends Seeder
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
         'name' => 'Christian Saravia',
         'email' => 'christian@cs50.harvard.edu',
-        'linkedin' => 'https://www.linkedin.com/in/christiansaravia',
-        'github' => 'https://github.com/christiansaravia',
-        'website' => 'http://christiansaravia.com',
         'role' => 'Software Engineering',
-	    ]);
+        'linkedin' => 'https://linkedin.com/in/christiansaravia',
+        'github' => 'https://github.com/christiansaravia',
+        'project' => 'http://christiansaravia.com',
+	    ]);    
 
 	    DB::table('candidates')->insert([
         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        'name' => 'Luke Jackson',
-        'email' => 'luke@cs50.harvard.edu',
-        'linkedin' => 'https://www.linkedin.com/in/lukejackson',
-        'github' => 'https://github.com/lukejackson',
-        'website' => 'http://lukejackson.com',
+        'name' => 'Tom Smith',
+        'email' => 'tom@cs50.harvard.edu',
         'role' => 'Design',
-	    ]);
+        'linkedin' => 'https://linkedin.com/in/tomsmith',
+        'github' => 'https://github.com/tomsmith',
+	    ]);  
 
 	    DB::table('candidates')->insert([
         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        'name' => 'Ana Smith',
-        'email' => 'ana@cs50.harvard.edu',
-        'linkedin' => 'https://www.linkedin.com/in/anasmith',
-        'github' => 'https://github.com/anasmith',
-        'website' => 'http://anasmith.com',
-        'role' => 'Marketing',
-	    ]);
+        'name' => 'Ana Kim',
+        'email' => 'ana@harvard.edu',
+        'role' => 'Product Management',
+        'linkedin' => 'https://linkedin.com/in/anakim',
+        'project' => 'http://anakim.com',
+	    ]); 
+
+        DB::table('candidates')->insert([
+        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'name' => 'Andrew Rarcher',
+        'email' => 'andrew@harvard.edu',
+        'role' => 'Design',
+        'linkedin' => 'https://linkedin.com/in/andrew',
+        'behance' => 'https://behance.net/andrewtarcher',
+        ]); 
     }
 }

@@ -65,8 +65,12 @@
             @yield('navbar')
           </ul>
           <form class="navbar-form navbar-right">
-            <button type="submit" class="btn btn-default">Sign In</button>
-            <button type="submit" class="btn btn-default">Sign Up</button>
+            @if(Auth::check())
+                <a href="/logout" class="btn btn-default" role="button">Log out</a>
+            @else
+                <a href="/register" class="btn btn-primary" role="button">Sign Up</a>
+                <a href="/login" class="btn btn-default" role="button">Login</a>
+            @endif
           </form>
         </div>
 

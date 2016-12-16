@@ -3,117 +3,136 @@
 namespace Matchio\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Carbon;
+
+use Matchio\Http\Requests;
 use Matchio\Candidate;
+use Matchio\User;
+use Session;
+use Auth;
 
 class CandidateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    # GET
     public function index()
     {
-        $candidates = Candidate::all(); # Query DB
-        $first = $candidates->first(); # Query Collection (avoid multiple queries to DB)
+        # Query DB
+        $candidates = Candidate::all();
 
-        return view('candidate.index')  
-            ->with('candidates', $candidates)
-            ->with('first', $first);       
+        # Display results
+        return view('candidate.index')->with('candidates', $candidates);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    # GET
     public function create()
     {
+        # Display results
         return view('candidate.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    # POST
     public function store(Request $request)
     {
-        # Validate the request data
+        # Validation
         $this->validate($request, [
-            'name' => 'required|string',
-            'email'=> 'required|email',
-            'linkedin' => 'required|active_url',
-            'portfolio' => 'url',
-            'website' => 'url',
+            'name' => 'required',
+            'email' => 'required',
             'role' => 'required',
+            'linkedin' => 'required|url',
+            'github' => 'url',
+            'project' => 'url',
         ]);
 
-        # Get data from the form
-        #$name = $request->input('name');
-        #$email = $request->input('email');
-
-        # Code here to enter the candidate into the database
+        # Enter form data into the database
         $candidate = new Candidate();
         $candidate->name = $request->name;
         $candidate->email = $request->email;
+        $candidate->role = $request->role;
         $candidate->linkedin = $request->linkedin;
         $candidate->github = $request->github;
-        $candidate->website = $request->website;
-        $candidate->role = $request->role;
+        $candidate->behance = $request->behance;
+        $candidate->project = $request->project;
         $candidate->save();
-
-        # Code here that has some logic, such as generating lorem ipsum text
-
-        # Print the results
+    
+        # Display results
         return redirect('/candidates');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $username
-     * @return \Illuminate\Http\Response
-     */
-    public function show($username)
+    # GET
+    public function show($id)
     {
-        return view('candidate.show')->with('username', $username);
+        # find candidate
+        $candidate = Candidate::find($id);
+
+        if(is_null($candidate)) {
+            Session::flash('message','Candidate not found');
+            return redirect('/candidates');
+        }
+
+        return view('candidate.show')->with('candidate', $candidate);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $username
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($username)
+    # GET
+    public function edit($id)
     {
-        return view('candidate.edit')->with('username', $username);
+        # find candidate
+        $candidate = Candidate::find($id);
+        return view('candidate.edit')->with('candidate', $candidate);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $username
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $username)
+    # POST
+    public function update(Request $request, $id)
     {
-        //
+        # Validation
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+            'linkedin' => 'required|url',
+            'github' => 'url',
+            'project' => 'url',
+        ]);
+
+        # Enter form data into the database
+        $candidate = Candidate::find($request->id);
+        $candidate->name = $request->name;
+        $candidate->email = $request->email;
+        $candidate->role = $request->role;
+        $candidate->linkedin = $request->linkedin;
+        $candidate->github = $request->github;
+        $candidate->behance = $request->behance;
+        $candidate->project = $request->project;
+        $candidate->save();
+    
+        # Display results
+        return redirect('/candidates');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $username
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($username)
+
+    # GET
+    public function delete($id) {
+
+        # Find candidate
+        $candidate = Candidate::find($id);
+
+        return view('candidate.delete')->with('candidate', $candidate);
+    }
+
+    # POST
+    public function destroy($id)
     {
-        //
+        # Find candidate
+        $candidate = Candidate::find($id);
+
+        if(is_null($candidate)) {
+            Session::flash('message','Candidate not found.');
+            return redirect('/candidates');
+        }
+
+        # Then delete the candidate
+        $candidate->delete();
+
+        # Finish
+        Session::flash('flash_message', $candidate->name.' was deleted.');
+        return redirect('/candidates');
     }
 }

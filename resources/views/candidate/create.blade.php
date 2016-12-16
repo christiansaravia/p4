@@ -2,8 +2,9 @@
 
 @section('navbar')
     <li class="active"><a href="/candidates">Candidates <span class="sr-only">(current)</span></a></li>
+    <li><a href="/candidates">Jobs</a></li>
     <li><a href="/companies">Companies</a></li>
-@endsection
+@endsection                                                                                 
 
 @section('title')
     Add new candidate
@@ -13,7 +14,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2 class="page-header">Add your profile to our network of candidates</h2>
+            <h2 class="page-header">Add a new candidate profile</h2>
         </div>
     </div>
 
@@ -53,62 +54,67 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Ideal Role</label>
+                    <input 
+                        type="text" 
+                        id="role"
+                        name="role" 
+                        class="form-control" 
+                        placeholder="Software Engineering, Design, Product Management" 
+                        value="{{ old('role') }}">
+                    <div class='error'>{{ $errors->first('role') }}</div>
+                </div>
+
+                <div class="form-group">
                     <label>LinkedIn URL</label>
                     <input 
-                        type="url" 
+                        type="text" 
                         id="linkedin"
                         name="linkedin" 
                         value="{{ old('linkedin') }}"
-                        placeholder="https://linkedin.com/in/username"
+                        placeholder="https://linkedin.com/in/username" 
                         class="form-control" 
                     >
-                    <small class="form-text text-muted">Make sure the education and work experience sections are updated.</small>
                     <div class='error'>{{ $errors->first('linkedin') }}</div>
                 </div>
 
                 <div class="form-group">
-                    <label>GitHub URL<small> (Optional)</small></label>
+                    <label>GitHub URL <small>(Optional)</small></label>
                     <input 
-                        type="url" 
+                        type="text"
                         id="github"
                         name="github" 
+                        value="{{ old('github') }}"
+                        placeholder="https://github.com/username"
                         class="form-control" 
-                        placeholder="https://github.com/username" 
-                        value="{{ old('github') }}">
+                    >
                     <div class='error'>{{ $errors->first('github') }}</div>
                 </div>
 
                 <div class="form-group">
-                    <label>Personal Website URL<small> (Optional)</small></label>
+                    <label>Behance URL <small>(Optional)</small></label>
                     <input 
-                        type="url" 
-                        id="website"
-                        name="website" 
+                        type="text"
+                        id="behance"
+                        name="behance" 
+                        value="{{ old('behance') }}"
+                        placeholder="https://behance.net/username"
                         class="form-control" 
-                        placeholder="https://yourdomain.com" 
-                        value="{{ old('website') }}"
                     >
-                    <div class='error'>{{ $errors->first('website') }}</div>
+                    <div class='error'>{{ $errors->first('behance') }}</div>
                 </div>
 
                 <div class="form-group">
-                    <label>Ideal Role</label>
-                    <select  
-                        id="role"
-                        name="role" 
-                        class="form-control"
-                        value="{{ old('website') }}"
+                    <label>Personal Website or Project URL <small>(Optional)</small></label>
+                    <input 
+                        type="text" 
+                        id="project"
+                        name="project" 
+                        value="{{ old('project') }}"
+                        placeholder="http://yourprojectdomain.com"
+                        class="form-control" 
                     >
-                        
-                        <option value="" disabled selected>Select one</option>
-                        <option value="Software Engineering">Software Engineering</option>
-                        <option value="Design">Design</option>
-                        <option value="Product Management">Product Management</option>
-                        <option value="Business Development">Business Development</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Other">Dude, my ideal role wasn't one of these options!</option>
-                    </select>
-                    <div class='error'>{{ $errors->first('role') }}</div>
+                    <div class='error'>{{ $errors->first('project') }}</div>
                 </div>
 
                 <br>
@@ -116,6 +122,8 @@
                 <button type="submit" class="btn btn-primary">Submit Profile</button>
 
             </form>
+            <!-- End of form
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
         </div>
     </div>
 
